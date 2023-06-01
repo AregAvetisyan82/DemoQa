@@ -1,0 +1,12 @@
+import pytest
+from testdata.testing_data import url
+
+
+@pytest.mark.usefixtures("get_driver")
+class BaseTest:
+
+    def navigate_and_enter_data_in_textbox(self, full_name="", email="", curr_adr="", perm_adr="", expected_result=""):
+        self.base_page.go_to_page(url)
+        self.home_page.go_to_selected_page("Elements")
+        self.elements_page.go_to_selected_element("Text Box")
+        self.textbox_page.complete_textbox(full_name, email, curr_adr, perm_adr, expected_result)
